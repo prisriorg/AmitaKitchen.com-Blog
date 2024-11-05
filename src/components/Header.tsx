@@ -1,14 +1,18 @@
 "use client"
+
+import Link from "next/link";
+
 export default function Header() {
   return (
-    <header className="flex justify-between p-4 md:px-[10%] border-b-2 sticky top-0 z-50 bg-white">
-      <a href="/">
+    <header className="flex justify-between p-4 md:px-[10%] border-b-2 sticky top-0 z-50 bg-white md:bg-transparent md:backdrop-blur-3xl">
+      <Link href="/">
         <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
           Amita Kitchen
         </h1>
-      </a>
+      </Link>
       <button
         type="button"
+        aria-label="open menu"
         className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100"
       >
         <svg
@@ -30,44 +34,44 @@ export default function Header() {
       <nav className="hidden w-full md:block md:w-auto">
         <ul className="flex gap-x-8 pt-2">
           <li>
-            <a
+            <Link
               href="/"
               className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
             >
               Home
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/about"
               className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
             >
               About
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="/contact"
               className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
             >
               Contact
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="#"
               className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
             >
               Login
-            </a>
+            </Link>
           </li>
           <li>
-            <a
+            <Link
               href="#"
               className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
             >
               Register
-            </a>
+            </Link>
           </li>
         </ul>
       </nav>

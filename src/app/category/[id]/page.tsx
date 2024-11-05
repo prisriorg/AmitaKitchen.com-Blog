@@ -2,7 +2,7 @@ import CategorySection from "@/components/CategorySection";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PostBox from "@/components/PostBox";
-
+export const runtime = 'edge';
 export default function Home() {
   return (
     <>

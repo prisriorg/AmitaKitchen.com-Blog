@@ -1,24 +1,20 @@
 import { MetadataRoute } from 'next'
  
 export default function sitemap(): MetadataRoute.Sitemap {
-  return [
-    {
-      url: 'https://acme.com',
-      lastModified: new Date(),
-      changeFrequency: 'hourly',
-      priority: 1,
-    },
-    {
-      url: 'https://acme.com/about',
-      lastModified: new Date(),
-      changeFrequency: 'hourly',
-      priority: 0.8,
-    },
-    {
-      url: 'https://acme.com/blog',
-      lastModified: new Date(),
-      changeFrequency: 'hourly',
-      priority: 0.5,
-    },
-  ]
+  const url= "https://amitakitchen.com"
+  var sitemap:any[]=[];
+  sitemap.push({
+    url: url,
+    lastModified: new Date(),
+    changeFrequency: 'hourly',
+    priority: 1,
+  })
+
+
+
+  // Add your other URLs to the sitemap here
+
+
+  
+  return sitemap
 }

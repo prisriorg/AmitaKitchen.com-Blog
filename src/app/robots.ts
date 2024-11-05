@@ -6,8 +6,10 @@ export default function robots(): MetadataRoute.Robots {
       {
         userAgent: "*",
         allow: "/",
+        disallow: "/admin",
       },
     ],
-    sitemap: "/sitemap.xml",
+
+    sitemap: "https://amitakitchen.com/sitemap.xml",
   };
 }

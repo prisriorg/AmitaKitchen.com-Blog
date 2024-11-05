@@ -1,4 +1,10 @@
+import Link from "next/link";
+
 export default function Footer() {
+  const date = "© "+new Date().getFullYear()+" ";
+
+  var datee = new Date();
+datee.setDate(datee.getDate() - 30);
   return (
     <footer className="p-8 border-t-2">
       {/* <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
@@ -44,10 +50,10 @@ export default function Footer() {
       </div> */}
 
       <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-        © {new Date().getUTCFullYear()}{" "}
-        <a href="/" className="hover:underline">
+        {date}
+        <Link href="/" className="hover:underline">
           Amita Kitchen
-        </a>
+        </Link>
         . All Rights Reserved.
       </span>
     </footer>

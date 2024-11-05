@@ -1,7 +1,47 @@
-import CategorySection from "@/components/CategorySection";
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
 import PostBox from "@/components/PostBox";
+import SideBar from "@/components/SideBar";
+import config from "@/lib/config";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: config.SiteName,
+  description: config.Description,
+  keywords: config.Keywords,
+  openGraph: {
+    url: config.SiteUrl,
+    type: "website",
+    title: config.SiteName,
+    description: config.Description,
+    images: [
+      {
+        url: config.SiteLogo,
+        width: 1200,
+        height: 630,
+        alt: config.SiteName,
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: config.SiteName,
+    description: config.Description,
+    creator: "@amitakitchen",
+    site: "@amitakitchen",
+    images: [
+      {
+        url: config.SiteLogo,
+        width: 1200,
+        height: 630,
+        alt: config.SiteName,
+      },
+    ],
+  },
+  alternates: {
+    canonical: config.SiteUrl,
+  },
+};
 
 export default function Home() {
   return (
@@ -29,14 +69,7 @@ export default function Home() {
           </div>
         </main>
 
-        <div className="md:max-w-xs lg:max-w-sm mx-auto p-4">
-          <input
-            type="text"
-            placeholder="Search..."
-            className="w-full p-2 border border-gray-300 rounded-md focus:outline-none "
-          />
-          <CategorySection />
-        </div>
+        <SideBar />
       </div>
 
       <Footer />
