@@ -1,18 +1,8 @@
+import config from "@/lib/config";
 import Link from "next/link";
 
 const CategorySection = () => {
-  const categories = [
-    "css",
-    "frontend",
-    "git",
-    "html",
-    "javascript",
-    "layoff",
-    "next-js",
-    "react-js",
-    "seo",
-    "system-design",
-  ];
+  const categories = config.Category;
 
   return (
     <>
@@ -25,8 +15,9 @@ const CategorySection = () => {
 
       <div className="flex flex-wrap gap-2">
         {categories.map((category, index) => (
-          <Link href={"/category/"+category} 
-          key={index}
+          <Link
+            href={"/category/" + category.toLowerCase().replace(" ", "-")}
+            key={index}
             className="text-white bg-gray-700 px-4 py-2 rounded-md shadow-md hover:scale-105 transform transition duration-300"
           >
             {category}

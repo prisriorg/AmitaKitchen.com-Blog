@@ -1,14 +1,15 @@
-"use client"
+"use client";
 
 import Link from "next/link";
 
 export default function Header() {
   return (
     <header className="flex justify-between p-4 md:px-[10%] border-b-2 sticky top-0 z-50 bg-white md:bg-transparent md:backdrop-blur-3xl">
-      <Link href="/">
-        <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
-          Amita Kitchen
-        </h1>
+      <Link
+        href="/"
+        className="text-3xl font-bold text-gray-900 dark:text-white"
+      >
+        Amita Kitchen
       </Link>
       <button
         type="button"
@@ -57,22 +58,22 @@ export default function Header() {
               Contact
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               href="#"
               className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
             >
               Login
             </Link>
-          </li>
-          <li>
+          </li> */}
+          {/* <li>
             <Link
               href="#"
               className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
             >
               Register
             </Link>
-          </li>
+          </li> */}
         </ul>
       </nav>
     </header>

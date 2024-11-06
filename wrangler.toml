@@ -1,13 +1,20 @@
-#:schema node_modules/wrangler/config-schema.json
 name = "amitakitchen"
 compatibility_date = "2024-10-22"
 compatibility_flags = ["nodejs_compat"]
 pages_build_output_dir = ".vercel/output/static"
 
-[env.production]
 
 [[d1_databases]]
+migrations_dir = "./src/db/migrations"
 binding = "DB"
 database_name = "amitakitchen"
 database_id = "72a8dd48-a38d-4c15-983a-6b3178f7c2e6"
-migrations_dir = "drizzle/migrations"
+
+
+[env.preview]
+name = "preview"
+[[env.preview.d1_databases]]
+migrations_dir = "./src/db/migrations"
+binding = "DB"
+database_name = "amitakitchen"
+database_id = "72a8dd48-a38d-4c15-983a-6b3178f7c2e6"

@@ -29,7 +29,7 @@ export default function Home() {
           </div>
         </main>
 
-        <div className="md:max-w-xs lg:max-w-sm mx-auto p-4">
+        <div className="md:w-[30%] p-4">
           <input
             type="text"
             placeholder="Search..."

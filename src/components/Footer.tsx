@@ -1,61 +1,93 @@
+import { FaYoutube, FaInstagram, FaFacebook, FaTwitter } from "react-icons/fa";
 import Link from "next/link";
+import Image from "next/image";
 
-export default function Footer() {
-  const date = "© "+new Date().getFullYear()+" ";
-
-  var datee = new Date();
-datee.setDate(datee.getDate() - 30);
+const Footer: React.FC = () => {
   return (
-    <footer className="p-8 border-t-2">
-      {/* <div className="w-full max-w-screen-xl mx-auto p-4 md:py-8">
-        <div className="sm:flex sm:items-center sm:justify-between">
-          <a
-            href="https://flowbite.com/"
-            className="flex items-center mb-4 sm:mb-0 space-x-3 rtl:space-x-reverse"
-          >
-            <img
-              src="https://flowbite.com/docs/images/logo.svg"
-              className="h-8"
-              alt="Flowbite Logo"
-            />
-            <span className="self-center text-2xl font-semibold whitespace-nowrap dark:text-white">
-              Flowbite
-            </span>
-          </a>
-          <ul className="flex flex-wrap items-center mb-6 text-sm font-medium text-gray-500 sm:mb-0 dark:text-gray-400">
-            <li>
-              <a href="#" className="hover:underline me-4 md:me-6">
-                About
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline me-4 md:me-6">
-                Privacy Policy
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline me-4 md:me-6">
-                Licensing
-              </a>
-            </li>
-            <li>
-              <a href="#" className="hover:underline">
-                Contact
-              </a>
-            </li>
-          </ul>
-        </div>
-        <hr className="my-6 border-gray-200 sm:mx-auto dark:border-gray-700 lg:my-8" />
+    <footer className="bg-black text-white py-8">
+      <div className="container mx-auto flex flex-col items-center px-4 md:px-8 lg:px-16">
         
-      </div> */}
+        {/* Site Logo and Name */}
+        <div className="flex items-center space-x-2 mb-4">
+          <Image
+            src="/logo.jpg"
+            alt="Site Logo"
+            width={100}
+            height={100}
+            title="Amita Kitchen Site Logo"
+            className="w-10 h-10 rounded-full"
+          />
+          <span className="text-lg font-semibold">Amita Kitchen</span>
+        </div>
 
-      <span className="block text-sm text-gray-500 sm:text-center dark:text-gray-400">
-        {date}
-        <Link href="/" className="hover:underline">
-          Amita Kitchen
-        </Link>
-        . All Rights Reserved.
-      </span>
+        {/* Social Media Icons */}
+        <div className="flex space-x-6 mt-4">
+          <a
+            href="https://www.youtube.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-red-500 transition"
+          >
+            <FaYoutube className="w-6 h-6" />
+          </a>
+          <a
+            href="https://www.instagram.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-pink-500 transition"
+          >
+            <FaInstagram className="w-6 h-6" />
+          </a>
+          <a
+            href="https://www.facebook.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-500 transition"
+          >
+            <FaFacebook className="w-6 h-6" />
+          </a>
+          <a
+            href="https://www.twitter.com/"
+            target="_blank"
+            rel="noopener noreferrer"
+            className="hover:text-blue-400 transition"
+          >
+            <FaTwitter className="w-6 h-6" />
+          </a>
+        </div>
+
+        {/* Navigation Links */}
+        <div className="flex flex-wrap justify-center space-x-4 mt-6 text-gray-400 text-sm">
+          <Link href="/about" className="hover:text-white transition">
+            About
+          </Link>
+          <Link href="/recipes" className="hover:text-white transition">
+            Recipes
+          </Link>
+          <Link href="/blog" className="hover:text-white transition">
+            Blog
+          </Link>
+          <Link href="/contact" className="hover:text-white transition">
+            Contact
+          </Link>
+          <Link href="/privacy-policy" className="hover:text-white transition">
+            Privacy Policy
+          </Link>
+          <Link href="/terms" className="hover:text-white transition">
+            Terms
+          </Link>
+        </div>
+
+        {/* Divider Line */}
+        <div className="mt-8 w-full border-t-2 border-gray-600"></div>
+
+        {/* Copyright Message */}
+        <p className="mt-6 text-gray-500 text-xs md:text-sm text-center">
+          &copy; {new Date().getFullYear()} Amita Kitchen. All rights reserved.
+        </p>
+      </div>
     </footer>
   );
-}
+};
+
+export default Footer;

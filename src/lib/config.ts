@@ -1,8 +1,8 @@
 const config = {
-  SiteName: "amitakitchen",
+  SiteName: "Amita Kitchen",
   Author: "Amita Kitchen",
   Description: "A Cooking Blog with Amita",
-  Category: "Cooking",
+  Category: ["Sabji", "Achar","Dish"],
   Keywords: [
     "amitakitchen.com",
     "cooking",
@@ -19,7 +19,7 @@ const config = {
   SiteLogo: "https://amitakitchen.com" + "/logo.png",
   Display: "standalone",
   Google: "DATA",
-  rss:"https://amitakitchen.com" + "/feed.xml",
+  rss: "https://amitakitchen.com" + "/feed.xml",
 };
 
 export default config;

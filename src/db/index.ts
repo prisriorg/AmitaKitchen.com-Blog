@@ -8,6 +8,8 @@ export const runtime = 'edge'
 export function initDbConnection() {
   if (process.env.NODE_ENV === 'development') {
     const { env: requestEnv } = getRequestContext()
+
+    // @ts-expect-error DB is exist
     return drizzle(requestEnv.DB, { schema })
   }
 

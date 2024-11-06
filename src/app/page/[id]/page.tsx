@@ -5,6 +5,7 @@ import PostBox from "@/components/PostBox";
 import SideBar from "@/components/SideBar";
 import config from "@/lib/config";
 import { Metadata } from "next";
+export const runtime = "edge";
 
 export const metadata: Metadata = {
   title: config.SiteName,
@@ -44,7 +45,7 @@ export const metadata: Metadata = {
   },
 };
 
-export default function Home() {
+export default function Page({ params }: { params: { id: number } }) {
   return (
     <>
       <Header />
@@ -67,7 +68,7 @@ export default function Home() {
             {/* <button className="text-white bg-gray-900 hover:bg-black px-6 py-2 rounded-md border">
               Load More
             </button> */}
-            <Pagination activePage={1} totalPage={20}/>
+            <Pagination activePage={params.id} totalPage={2}/>
           </div>
         </main>
 
