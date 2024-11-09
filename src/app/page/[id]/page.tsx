@@ -4,63 +4,89 @@ import Pagination from "@/components/Pagination";
 import PostBox from "@/components/PostBox";
 import SideBar from "@/components/SideBar";
 import config from "@/lib/config";
-import { Metadata } from "next";
+import { getPosts } from "@/services/actions";
+import { Metadata, ResolvingMetadata } from "next";
+
 export const runtime = "edge";
 
-export const metadata: Metadata = {
-  title: config.SiteName,
-  description: config.Description,
-  keywords: config.Keywords,
-  openGraph: {
-    url: config.SiteUrl,
-    type: "website",
-    title: config.SiteName,
-    description: config.Description,
-    images: [
-      {
-        url: config.SiteLogo,
-        width: 1200,
-        height: 630,
-        alt: config.SiteName,
-      },
-    ],
-  },
-  twitter: {
-    card: "summary_large_image",
-    title: config.SiteName,
-    description: config.Description,
-    creator: "@amitakitchen",
-    site: "@amitakitchen",
-    images: [
-      {
-        url: config.SiteLogo,
-        width: 1200,
-        height: 630,
-        alt: config.SiteName,
-      },
-    ],
-  },
-  alternates: {
-    canonical: config.SiteUrl,
-  },
+type Props = {
+  params: Promise<{ id: string }>;
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 };
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  const id = (await params).id;
 
-export default function Page({ params }: { params: { id: number } }) {
+  return {
+    title: id + " Page | " + config.SiteName,
+    description: config.Description,
+    keywords: config.Keywords,
+    openGraph: {
+      url: config.SiteUrl,
+      type: "website",
+      title: id + " Page | " + config.SiteName,
+      description: config.Description,
+      images: [
+        {
+          url: config.SiteLogo,
+          width: 1200,
+          height: 630,
+          alt: config.SiteName,
+        },
+      ],
+    },
+    twitter: {
+      card: "summary_large_image",
+      title: config.SiteName,
+      description: config.Description,
+      creator: "@amitakitchen",
+      site: "@amitakitchen",
+      images: [
+        {
+          url: config.SiteLogo,
+          width: 1200,
+          height: 630,
+          alt: config.SiteName,
+        },
+      ],
+    },
+    alternates: {
+      canonical: config.SiteUrl + `/page/${id}`,
+    },
+  };
+}
+
+export default async function Page({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
+  let id = (await params).id;
+
+  var data = await getPosts(Number(id), 10);
   return (
     <>
       <Header />
-
       <div className="md:flex md:px-[7%]">
         <main className="p-4 md:w-[70%]">
           <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-1 gap-4">
-            {Array.from({ length: 15 }).map((_, index) => (
+            {data.map((da, index) => (
               <PostBox
                 key={index}
-                image="https://www.frontendzone.com/_next/image?url=%2Fimages%2Fdefault2.png&w=1920&q=75"
-                link={"post-box" + index}
-                title={"post-box" + index}
-                time={index + " minutes ago"}
-                discription={"post-box" + index}
+                image={
+                  config.SiteUrl +
+                  "/images/" +
+                  da.yt +
+                  "/" +
+                  da.title.replaceAll(" ", "-") +
+                  ".jpg"
+                }
+                link={da.yt}
+                title={da.title}
+                time={da.time?.toISOString() || ""}
+                discription={da.description}
               />
             ))}
           </div>
@@ -68,7 +94,7 @@ export default function Page({ params }: { params: { id: number } }) {
             {/* <button className="text-white bg-gray-900 hover:bg-black px-6 py-2 rounded-md border">
               Load More
             </button> */}
-            <Pagination activePage={params.id} totalPage={2}/>
+            <Pagination activePage={Number(id) || 1} totalPage={2} />
           </div>
         </main>
 

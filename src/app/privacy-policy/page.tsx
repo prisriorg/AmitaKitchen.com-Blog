@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import AboutUs from "@/components/pages/about";
+import PrivacyPolicy from "@/components/pages/privacy-policy";
 import SideBar from "@/components/SideBar";
 import config from "@/lib/config";
 import { getPosts } from "@/services/actions";
@@ -9,7 +9,7 @@ import { Metadata } from "next";
 export const runtime = "edge";
 
 export const metadata: Metadata = {
-  title: "About Us | "+config.SiteName,
+  title: "Privacy Policy | " + config.SiteName,
   description: config.Description,
   openGraph: {
     url: config.SiteUrl,
@@ -52,7 +52,7 @@ export default async function Page() {
       <Header />
       <div className="md:flex md:px-[7%]">
         <main className="p-4 md:w-[70%]">
-          <AboutUs/>
+          <PrivacyPolicy />
         </main>
 
         <SideBar />

@@ -1,0 +1,10 @@
+{
+    "sqltools.connections": [
+        {
+            "previewLimit": 50,
+            "driver": "SQLite",
+            "name": "hjyguih",
+            "database": "${workspaceFolder:amitakitchen}/.wrangler/state/v3/d1/miniflare-D1DatabaseObject/ce6fb1a87efe880e38a2f3593be1c83e39e9865d2f1449462cdfc31f91aa7108.sqlite"
+        }
+    ]
+}

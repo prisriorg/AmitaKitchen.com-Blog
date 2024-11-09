@@ -2,8 +2,12 @@ const config = {
   SiteName: "Amita Kitchen",
   Author: "Amita Kitchen",
   Description: "A Cooking Blog with Amita",
-  Category: ["Sabji", "Achar","Dish"],
-  Keywords: [
+  Category: ["Sabji", "Achar", "Dish"],
+  Keywords: ["amita kitchen",
+    "amitakitchen blog",
+    "kitchen",
+    "cooking blog",
+    "achar blog",
     "amitakitchen.com",
     "cooking",
     "blog",
@@ -15,11 +19,20 @@ const config = {
     "sabji",
     "dish",
   ],
+  pages:[
+    "About",
+    // "Recipes",
+    "Contact",
+    "Privacy Policy",
+    "Terms"
+  ],
   SiteUrl: "https://amitakitchen.com",
   SiteLogo: "https://amitakitchen.com" + "/logo.png",
   Display: "standalone",
-  Google: "DATA",
+  Google: "IjpB6DWYatr-VvIQexfolJP7robbqrbXA8QAUnPcH0Y",
   rss: "https://amitakitchen.com" + "/feed.xml",
+  instagram: "https://www.instagram.com/amitakitchen/",
+  youtube: "https://www.youtube.com/c/AmitaKitchen",
 };
 
 export default config;

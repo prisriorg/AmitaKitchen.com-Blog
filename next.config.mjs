@@ -10,7 +10,7 @@ if (process.env.NODE_ENV === "development") {
 /** @type {import('next').NextConfig} */
 const nextConfig = {
   images: {
-    domains: ["cdn.pixabay.com"],
+    domains: ["cdn.pixabay.com","amitakitchen.com"],
   },
 };
 

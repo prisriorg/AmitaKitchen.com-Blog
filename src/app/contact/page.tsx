@@ -1,6 +1,6 @@
 import Footer from "@/components/Footer";
 import Header from "@/components/Header";
-import AboutUs from "@/components/pages/about";
+import Contact from "@/components/pages/contact";
 import SideBar from "@/components/SideBar";
 import config from "@/lib/config";
 import { getPosts } from "@/services/actions";
@@ -52,7 +52,7 @@ export default async function Page() {
       <Header />
       <div className="md:flex md:px-[7%]">
         <main className="p-4 md:w-[70%]">
-          <AboutUs/>
+          <Contact/>
         </main>
 
         <SideBar />

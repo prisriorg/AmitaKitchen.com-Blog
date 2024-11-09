@@ -8,8 +8,8 @@
     "start": "next start",
     "lint": "next lint",
     "db": "drizzle-kit generate",
-    "local": "wrangler d1 migrations apply coinrush --local",
-    "prod": "wrangler d1 migrations apply coinrush --remote",
+    "local": "wrangler d1 migrations apply amitakitchen --local",
+    "prod": "wrangler d1 migrations apply amitakitchen --remote",
     "pages:build": "npx @cloudflare/next-on-pages",
     "pages:dev": "npx pages:build && npm wrangler pages dev",
     "pages:deploy:preview": "npm pages:build && npm wrangler pages deploy --branch preview",
@@ -17,7 +17,10 @@
     "deploy": "npm run pages:build && wrangler pages publish --branch=master"
   },
   "dependencies": {
+    "@next/third-parties": "^15.0.2",
+    "date-fns": "^4.1.0",
     "drizzle-orm": "^0.36.0",
+    "googleapis": "^144.0.0",
     "jsdom": "^25.0.1",
     "next": "14.2.5",
     "next-seo": "^6.6.0",

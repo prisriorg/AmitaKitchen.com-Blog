@@ -1,19 +1,31 @@
 "use client";
 
+import { useState } from "react";
 import Link from "next/link";
+import config from "@/lib/config";
 
 export default function Header() {
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+
+  const toggleMobileMenu = () => {
+    setIsMobileMenuOpen(!isMobileMenuOpen);
+  };
+
   return (
-    <header className="flex justify-between p-4 md:px-[10%] border-b-2 sticky top-0 z-50 bg-white md:bg-transparent md:backdrop-blur-3xl">
+    <header className="flex justify-between p-6 md:px-[10%] border-b-2 sticky top-0 z-50 bg-white md:bg-transparent md:backdrop-blur-3xl">
+      {/* Logo */}
       <Link
         href="/"
         className="text-3xl font-bold text-gray-900 dark:text-white"
       >
         Amita Kitchen
       </Link>
+
+      {/* Mobile Menu Toggle Button */}
       <button
         type="button"
         aria-label="open menu"
+        onClick={toggleMobileMenu}
         className="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100"
       >
         <svg
@@ -25,14 +37,16 @@ export default function Header() {
         >
           <path
             stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
+            strokeLinecap="round"
+            strokeLinejoin="round"
+            strokeWidth="2"
             d="M1 1h15M1 7h15M1 13h15"
           />
         </svg>
       </button>
-      <nav className="hidden w-full md:block md:w-auto">
+
+      {/* Desktop Navigation */}
+      <nav className="hidden w-full pl-4 md:block md:w-auto">
         <ul className="flex gap-x-8 pt-2">
           <li>
             <Link
@@ -42,40 +56,46 @@ export default function Header() {
               Home
             </Link>
           </li>
-          <li>
-            <Link
-              href="/about"
-              className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
-            >
-              About
-            </Link>
-          </li>
-          <li>
-            <Link
-              href="/contact"
-              className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
-            >
-              Contact
-            </Link>
-          </li>
-          {/* <li>
-            <Link
-              href="#"
-              className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
-            >
-              Login
-            </Link>
-          </li> */}
-          {/* <li>
-            <Link
-              href="#"
-              className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
-            >
-              Register
-            </Link>
-          </li> */}
+          {config.pages.map((da, index) => (
+            <li key={index}>
+              <Link
+                href={da.toLowerCase().replaceAll(" ", "-")}
+                className="text-sm font-medium text-gray-500 hover:text-black dark:text-gray-400"
+              >
+                {da}
+              </Link>
+            </li>
+          ))}
         </ul>
       </nav>
+
+      {/* Mobile Navigation */}
+      {isMobileMenuOpen && (
+        <nav className="md:hidden absolute top-full left-0 w-full bg-white shadow-lg border-t">
+          <ul className="flex flex-col p-4 space-y-4">
+            <li>
+              <Link
+                href="/"
+                className="text-sm font-medium text-gray-700 hover:text-black"
+                onClick={() => setIsMobileMenuOpen(false)}
+              >
+                Home
+              </Link>
+            </li>
+            {config.pages.map((da, index) => (
+              <li key={index}>
+                <Link
+                  href={config.SiteUrl+"/"+da.toLowerCase().replaceAll(" ", "-")}
+                  className="text-sm font-medium text-gray-700 hover:text-black"
+                  onClick={() => setIsMobileMenuOpen(false)}
+                >
+                  {da}
+                </Link>
+              </li>
+            ))}
+          </ul>
+        </nav>
+      )}
     </header>
   );
 }

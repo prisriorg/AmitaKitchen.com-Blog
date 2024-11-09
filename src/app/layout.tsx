@@ -3,6 +3,11 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import NextTopLoader from "nextjs-toploader";
 import config from "@/lib/config";
+import { GoogleTagManager } from "@next/third-parties/google";
+import { GoogleAnalytics } from "@next/third-parties/google";
+import Head from "next/head";
+import Script from "next/script";
+import GoogleAdsense from "@/components/GoogleAdsense";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -24,9 +29,9 @@ export const metadata: Metadata = {
     "max-snippet": -1,
     "max-video-preview": -1,
     googleBot: {
-      index:true,
-      follow:true
-    }
+      index: true,
+      follow: true,
+    },
   },
 
   alternates: {
@@ -85,7 +90,10 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className={inter.className}>
-        <NextTopLoader height={2} color="#000000" showSpinner={false} />
+        <GoogleAdsense pId={"5591515314789878"} />
+        <GoogleTagManager gtmId="GTM-K5BDFSNX" />
+        <GoogleAnalytics gaId="G-LKPVH58GC4" />
+        <NextTopLoader height={3} color="#000000" showSpinner={false} />
         {children}
       </body>
     </html>

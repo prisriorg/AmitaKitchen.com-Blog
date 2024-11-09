@@ -1,3 +1,4 @@
+import config from "@/lib/config";
 import Image from "next/image";
 import Link from "next/link";
 import { FaYoutube, FaInstagram } from "react-icons/fa";
@@ -24,7 +25,7 @@ const AboutAuthor: React.FC = () => {
       </div>
       <div className="flex justify-center space-x-4 mt-2">
         <a
-          href="https://www.youtube.com/"
+          href={config.youtube}
           target="_blank"
           rel="noopener noreferrer"
           className="text-red-600 transition-transform transform hover:scale-110 hover:text-red-700"
@@ -34,7 +35,7 @@ const AboutAuthor: React.FC = () => {
         </a>
         
         <a
-          href="https://www.instagram.com/"
+          href={config.instagram}
           target="_blank"
           rel="noopener noreferrer"
           className="text-pink-500 transition-transform transform hover:scale-110 hover:text-pink-600"
